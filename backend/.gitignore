@@ -1,0 +1,16 @@
+# Dependencies
+/node_modules
+/dist
+/build
+
+# Environment and Credentials
+.env
+.DS_Store
+
+# Logs and local storage
+npm-debug.log*
+yarn-error.log*
+/pids
+
+# TypeScript output (if you didn't set dist)
+*.js.map
