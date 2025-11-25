@@ -1,8 +1,11 @@
 import https from 'http'
-
+import students from './data'
 const server = https.createServer((req,res)=>{
-    res.writeHead(200,{'Content-Type': 'text/plain'})
-    res.end('helloe')
+
+    
+    const htm = '<h1>Students</h1>'
+    res.writeHead(200,{'Content-Type': 'application/json'})
+    res.end(JSON.stringify(students))
 })
 
 server.listen(3001,()=>{
