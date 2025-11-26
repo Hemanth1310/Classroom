@@ -20,7 +20,7 @@ const server = https.createServer((req,res)=>{
             req.on('end',()=>{
                 let newStudentdata :studentData = JSON.parse(tempData)
                 res.writeHead(201,{'Content-type':'text\plain'})
-                res.end(JSON.stringify({...StudentData,[StudentData.length]:newStudentdata}))
+                res.end(JSON.stringify([...StudentData,newStudentdata]))
             })
         }else if(method==='PATCH'){
             let tempData = ''
@@ -48,8 +48,15 @@ const server = https.createServer((req,res)=>{
         const id = Number(url.split('/')[3])
         const studentData :studentData[] = StudentData.filter((student)=>student.id===id)
         if(studentData.length>0){
-            res.writeHead(200,{'Content-type':'application/json'})
-            res.end(JSON.stringify(studentData))
+            if(method==='GET'){
+                res.writeHead(200,{'Content-type':'application/json'})
+                res.end(JSON.stringify(studentData))
+            }else if (method==='DELETE'){
+                const deletedStudentArray = StudentData.filter(student=>student.id!==id)
+                res.writeHead(201,{'Content-type':'application/json'})
+                res.end(JSON.stringify(deletedStudentArray))
+            }
+           
         }else{
             res.writeHead(404,{'Content-type':"text/plain"})
             res.end('User Not found')
