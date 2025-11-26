@@ -1,5 +1,6 @@
-const students = {
-        StudentData:[
+import { studentData } from "./types"
+
+const StudentData :studentData[] =[
         {   
             id:1,
             name:'john',
@@ -20,5 +21,5 @@ const students = {
             name:'truck',
             class:'b'
         },
-    ]}
-export default students
+]
+export default StudentData
