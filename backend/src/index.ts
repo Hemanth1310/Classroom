@@ -44,6 +44,10 @@ const server = https.createServer((req,res)=>{
             })
             
         }
+        else{
+            res.setHeader("Content-type","text/plain")
+            res.end('INVALID METHOD')
+        }
     }else if(url?.startsWith('/api/students/')){
         const id = Number(url.split('/')[3])
         const studentData :studentData[] = StudentData.filter((student)=>student.id===id)
@@ -55,6 +59,10 @@ const server = https.createServer((req,res)=>{
                 const deletedStudentArray = StudentData.filter(student=>student.id!==id)
                 res.writeHead(201,{'Content-type':'application/json'})
                 res.end(JSON.stringify(deletedStudentArray))
+            }
+            else{
+                res.writeHead(405,{'Content-type':'application/json'})
+                res.end('INVALID METHOD onStudent')
             }
            
         }else{
