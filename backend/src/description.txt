@@ -1,0 +1,1 @@
+The Pro team is responsible for everything to do with the trading backend services such as the matching engine, market data gateways, internal and external APIs, and various other trading services. 
